@@ -2,6 +2,8 @@
 
 A simple Open Source API for Content Management.
 
+[![Join the chat at https://gitter.im/contentment-dot-io/Lobby](https://badges.gitter.im/contentment-dot-io/Lobby.svg)](https://gitter.im/contentment-dot-io/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 ## Contributing
 
 Pull requests are always welcome. Please read the [contributing guidelines](CONTRIBUTING.md).
