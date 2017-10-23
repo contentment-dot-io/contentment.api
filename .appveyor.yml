@@ -1,0 +1,17 @@
+version: 0.0.0.{build}
+skip_tags: true
+configuration: Release
+init:
+- git config --global core.autocrlf true
+build_script:
+  - cmd: >-
+      cd %BUILD_DIR%
+
+      dotnet restore
+      
+      dotnet build
+test_script:
+  - cmd: >-
+      dotnet test .\test\Contentment.Api.Test\Contentment.Api.Test.csproj --logger "trx;LogFileName=results.trx"
+after_test:
+  - ps: ./uploadTestResults.ps1
