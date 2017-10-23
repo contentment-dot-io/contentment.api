@@ -1,0 +1,44 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Contentment API",
+        "description": "A simple API for managing content",
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "0.0.1"
+    },
+    "paths": {
+        "/info": {
+            "get": {
+                "description": "Information for the current status of the API",
+                "responses": {
+                    "200": {
+                        "description": "API Information",
+                        "content": {
+                            "application/vnd+contentment+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiInfo"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "ApiInfo": {
+                "type": "object",
+                "properties": {
+                    "version": {
+                        "type": "string",
+                        "pattern": "^/d+\\./d+\\./d+$"
+                    }
+                }
+            }
+        }
+    }
+}
