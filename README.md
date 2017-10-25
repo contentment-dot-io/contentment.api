@@ -9,3 +9,21 @@ A simple Open Source API for Content Management.
 ## Contributing
 
 Pull requests are always welcome. Please read the [contributing guidelines](.github/CONTRIBUTING.md).
+
+## Docker
+
+### Build with Docker
+
+```bash
+cd ./src/Contentment.Api
+
+docker build -t contentment-api .
+```
+
+### Run from Docker
+
+```bash
+docker run -it -p 5000:80 contentment-api
+```
+
+Navigate to `http://localhost:5000/info/`
