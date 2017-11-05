@@ -1,0 +1,8 @@
+language: csharp
+mono: none
+dotnet: 1.0.3
+dist: trusty
+script:
+ - dotnet restore
+ - dotnet build
+ - dotnet test ./test/Contentment.Api.Test/Contentment.Api.Test.csproj
