@@ -11,8 +11,8 @@ before_script: npm install -g markdownlint-cli
 script:
   - markdownlint .
   - dotnet restore
-  - dotnet build
-  - dotnet test ./test/Contentment.Api.Test/Contentment.Api.Test.csproj
+  - dotnet build -c Release
+  - dotnet vstest ./test/Contentment.Api.Test/bin/Release/netcoreapp1.1/Contentment.Api.Test.dll ./test/Contentment.Api.IntegrationTest/bin/Release/netcoreapp1.1/Contentment.Api.IntegrationTest.dll
   - if [[ $TRAVIS_PULL_REQUEST == “false” ]] && [[ $TRAVIS_BRANCH == “master” ]]; then
       docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD";
       cd src/Contentment.Api/;
