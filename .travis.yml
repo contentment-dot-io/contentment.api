@@ -1,8 +1,25 @@
 language: csharp
+sudo: required
 mono: none
 dotnet: 1.0.3
 dist: trusty
+addons:
+  apt:
+    packages:
+      - docker-ce
+before_script: npm install -g markdownlint-cli
 script:
- - dotnet restore
- - dotnet build
- - dotnet test ./test/Contentment.Api.Test/Contentment.Api.Test.csproj
+  - markdownlint .
+  - dotnet restore
+  - dotnet build
+  - dotnet test ./test/Contentment.Api.Test/Contentment.Api.Test.csproj
+  - if [[ $TRAVIS_PULL_REQUEST == “false” ]] && [[ $TRAVIS_BRANCH == “master” ]]; then
+      docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD";
+      cd src/Contentment.Api/;
+      export SLUG=contentmentcms/contentment.api:0.0.1.$TRAVIS_JOB_ID;
+      docker build -t $SLUG --build-arg BUILD_NUMBER=$TRAVIS_JOB_ID .;
+      docker push $SLUG;
+    fi
+
+services:
+  - docker

@@ -1,4 +1,6 @@
 FROM microsoft/aspnetcore-build AS build-env
+ARG BUILD_NUMBER=0
+ENV BUILD_NUMBER ${BUILD_NUMBER}
 WORKDIR /source
 
 # Copy csproj and restore as distinct layers
