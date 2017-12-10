@@ -16,7 +16,9 @@ namespace Contentment.Api.Controllers
 		[HttpGet("/info")]
 		public JsonResult GetApiInfo() {
 			var apiInfo = new ApiInfoViewModel(_apiInfoService.Get());
-			return Json(apiInfo);
+			var jsonResult = Json(apiInfo);
+			jsonResult.ContentType = "application/vnd+contentment+json";
+			return jsonResult;
 		}
 	}
 }

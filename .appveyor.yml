@@ -12,6 +12,6 @@ build_script:
       dotnet build
 test_script:
   - cmd: >-
-      dotnet test .\test\Contentment.Api.Test\Contentment.Api.Test.csproj --logger "trx;LogFileName=results.trx"
+      dotnet vstest ./test/Contentment.Api.Test/bin/Release/netcoreapp1.1/Contentment.Api.Test.dll ./test/Contentment.Api.IntegrationTest/bin/Release/netcoreapp1.1/Contentment.Api.IntegrationTest.dll /logger:trx;LogFileName=results.trx
 after_test:
   - ps: ./uploadTestResults.ps1
