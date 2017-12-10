@@ -26,6 +26,52 @@
                     }
                 }
             }
+        },
+        "/content": {
+            "post": {
+                "description": "Create new content",
+                "requestBody": {
+                    "description": "Content to add to the system",
+                    "required": true,
+                    "content": {
+                        "application/vnd+contentment+json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ContentCreate"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "New content created",
+                        "headers": {
+                            "Location": {
+                                "description": "The URL location of the newly created content",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "content": {
+                            "application/vnd+contentment+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Content"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "content": {
+                            "application/vnd+contentment-exception+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ClientError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     },
     "components": {
@@ -36,6 +82,73 @@
                     "version": {
                         "type": "string",
                         "pattern": "^/d+\\./d+\\./d+$"
+                    }
+                }
+            },
+            "ContentCreate": {
+                "type": "object",
+                "required": [
+                    "title",
+                    "body"
+                ],
+                "properties": {
+                    "title": {
+                        "type": "string",
+                        "description": "The content title",
+                        "maxLength": 100
+                    },
+                    "body": {
+                        "type": "string",
+                        "description": "The content body"
+                    }
+                }
+            },
+            "Content": {
+                "allOf": [{
+                        "type": "object",
+                        "required": [
+                            "id",
+                            "createdDateTime"
+                        ],
+                        "properties": {
+                            "id": {
+                                "type": "string",
+                                "description": "The unique identifier for the content"
+                            },
+                            "createdDateTime": {
+                                "type": "string",
+                                "format": "date",
+                                "description": "The date and time the content was created"
+                            }
+                        }
+                    },
+                    {
+                        "$ref": "#/components/schemas/ContentCreate"
+                    }
+                ]
+            },
+            "ClientError": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "detailed": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "message": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }

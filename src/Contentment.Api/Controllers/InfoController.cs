@@ -1,5 +1,5 @@
 using Contentment.Api.Model;
-using Contentment.Api.Service;
+using Contentment.Api.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Contentment.Api.Controllers

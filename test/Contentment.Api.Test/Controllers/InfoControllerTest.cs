@@ -4,14 +4,14 @@ using NUnit.Framework;
 using Contentment.Api.Controllers;
 using Contentment.Api.Model;
 using Moq;
-using Contentment.Api.Service;
+using Contentment.Api.Services;
 using Contentment.Api.Domain;
 
 namespace Contentment.Api.Test.Controllers {
 
 	[TestFixture]
 	public class InfoControllerTest {
-	
+
 		[Test]
 		public void InfoController_ImplementsController() {
 			var controller = CreateController();
