@@ -23,6 +23,7 @@ namespace Contentment.Api.Controllers {
 				var newContent = _contentService.Create(content);
 				result = Json(newContent);
 				result.StatusCode = (int)HttpStatusCode.Created;
+				result.ContentType = ContentTypes.VENDOR_MIME_TYPE;
 			}
 			else {
 				var error = new ClientError(ModelState){
@@ -31,6 +32,7 @@ namespace Contentment.Api.Controllers {
 				};
 				result = Json(error);
 				result.StatusCode = (int)HttpStatusCode.BadRequest;
+				result.ContentType = ContentTypes.VENDOR_MIME_TYPE_ERROR;
 			}
 
 			return result;

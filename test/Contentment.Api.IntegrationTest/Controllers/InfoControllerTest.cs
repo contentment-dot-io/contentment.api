@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using Contentment.Api.Domain;
 using NUnit.Framework;
 
 namespace Contentment.Api.IntegrationTest.Controllers
@@ -13,7 +14,7 @@ namespace Contentment.Api.IntegrationTest.Controllers
 			var headers = response.Content.Headers;
 
 			Assert.That(headers.Contains("Content-Type"), Is.True);
-			Assert.That(headers.ContentType.MediaType, Is.EqualTo("application/vnd+contentment+json"));
+			Assert.That(headers.ContentType.MediaType, Is.EqualTo(ContentTypes.VENDOR_MIME_TYPE));
 		}
 	}
 }
