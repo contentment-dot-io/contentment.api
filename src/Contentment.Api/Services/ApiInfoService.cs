@@ -1,6 +1,6 @@
 using Contentment.Api.Domain;
 
-namespace Contentment.Api.Service {
+namespace Contentment.Api.Services {
 	public class ApiInfoService : IApiInfoService
 	{
 		private IApiVersion _apiVersion;

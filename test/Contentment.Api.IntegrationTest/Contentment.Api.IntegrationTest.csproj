@@ -10,5 +10,6 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\Contentment.Api\Contentment.Api.csproj" />
+    <ProjectReference Include="..\Contentment.Api.Test.Helpers\Contentment.Api.Test.Helpers.csproj" />
   </ItemGroup>
 </Project>

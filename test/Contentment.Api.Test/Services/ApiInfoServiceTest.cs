@@ -1,6 +1,6 @@
 using System;
 using Contentment.Api.Domain;
-using Contentment.Api.Service;
+using Contentment.Api.Services;
 using Moq;
 using NUnit.Framework;
 

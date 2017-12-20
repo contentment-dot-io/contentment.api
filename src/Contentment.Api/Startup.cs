@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Contentment.Api.Domain;
-using Contentment.Api.Service;
+using Contentment.Api.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -31,7 +31,9 @@ namespace Contentment.Api
         {
             services.AddTransient<IApiInfoService, ApiInfoService>();
             services.AddTransient<IApiVersion, ApiVersion>();
-            
+            services.AddTransient<IContentService, ContentService>();
+			services.AddTransient<IIdGenerator, GuidIdGenerator>();
+
             // Add framework services.
             services.AddMvc();
         }
