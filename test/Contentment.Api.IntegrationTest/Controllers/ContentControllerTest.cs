@@ -13,7 +13,7 @@ namespace Contentment.Api.IntegrationTest.Controllers {
 		[Test]
 		public async Task PostContent_WhenCalledWithValidContent_ThenShouldReturnCreatedContent() {
 			var validContent = ContentHelper.ValidContent();
-			var content = new StringContent(JsonConvert.SerializeObject(validContent), Encoding.UTF8, "application/json");
+			var content = new StringContent(JsonConvert.SerializeObject(validContent), Encoding.UTF8, ContentTypes.VENDOR_MIME_TYPE);
 			var response = await GetClient().PostAsync("/content", content);
 			var jsonString = await response.Content.ReadAsStringAsync();
 			dynamic json = JsonConvert.DeserializeObject(jsonString);
@@ -27,8 +27,7 @@ namespace Contentment.Api.IntegrationTest.Controllers {
 		[Test]
 		public async Task PostContent_WhenCalledWithValidContent_ThenShouldReturnVendorContentType() {
 			var validContent = ContentHelper.ValidContent();
-			//TODO: Fix in https://github.com/contentment-dot-io/contentment.api/issues/43
-			var content = new StringContent(JsonConvert.SerializeObject(validContent), Encoding.UTF8, "application/json");
+			var content = new StringContent(JsonConvert.SerializeObject(validContent), Encoding.UTF8, ContentTypes.VENDOR_MIME_TYPE);
 			var response = await GetClient().PostAsync("/content", content);
 
 			var headers = response.Content.Headers;
@@ -40,8 +39,7 @@ namespace Contentment.Api.IntegrationTest.Controllers {
 		[Test]
 		public async Task PostContent_WhenCalledWithInvalidContent_ThenShouldReturnVendorContentType() {
 			var validContent = ContentHelper.InvalidContent();
-			//TODO: Fix in https://github.com/contentment-dot-io/contentment.api/issues/43
-			var content = new StringContent(JsonConvert.SerializeObject(validContent), Encoding.UTF8, "application/json");
+			var content = new StringContent(JsonConvert.SerializeObject(validContent), Encoding.UTF8, ContentTypes.VENDOR_MIME_TYPE);
 			var response = await GetClient().PostAsync("/content", content);
 
 			var headers = response.Content.Headers;
