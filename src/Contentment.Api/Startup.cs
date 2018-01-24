@@ -6,9 +6,11 @@ using Contentment.Api.Domain;
 using Contentment.Api.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.Net.Http.Headers;
 
 namespace Contentment.Api
 {
@@ -35,7 +37,13 @@ namespace Contentment.Api
 			services.AddTransient<IIdGenerator, GuidIdGenerator>();
 
             // Add framework services.
-            services.AddMvc();
+            services.AddMvc(
+				mvcConfig => {
+					mvcConfig.InputFormatters.OfType<JsonInputFormatter>().First().SupportedMediaTypes.Add(
+						MediaTypeHeaderValue.Parse(ContentTypes.VENDOR_MIME_TYPE)
+					);
+				}
+			);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
