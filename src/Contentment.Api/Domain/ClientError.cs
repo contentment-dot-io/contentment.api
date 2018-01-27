@@ -10,19 +10,18 @@ namespace Contentment.Api.Domain {
 			Detailed = PopulateFromModelState(modelState);
 		}
 
-		private IDictionary<string, IList<ErrorDetail>> PopulateFromModelState(ModelStateDictionary modelState)
+		private static IDictionary<string, IList<ErrorDetail>> PopulateFromModelState(ModelStateDictionary modelState)
 		{
 			var errors = new Dictionary<string, IList<ErrorDetail>>();
 
 			foreach(var stateEntry in modelState) {
-				var detail = new ErrorDetail();
 				errors.Add(stateEntry.Key, PopulateErrorDetail(stateEntry.Value));
 			}
 
 			return errors;
 		}
 
-		private IList<ErrorDetail> PopulateErrorDetail(ModelStateEntry entry)
+		private static IList<ErrorDetail> PopulateErrorDetail(ModelStateEntry entry)
 		{
 			var details = new List<ErrorDetail>();
 			foreach (var error in entry.Errors) {

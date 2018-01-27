@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Contentment.Api.Controllers {
 	public class ContentController : Controller
 	{
-		private IContentService _contentService;
+		private readonly IContentService _contentService;
 
 		public ContentController(IContentService contentService)
 		{

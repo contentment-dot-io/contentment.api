@@ -6,7 +6,7 @@ namespace Contentment.Api.Controllers
 {
 	public class InfoController : Controller
 	{
-		private IApiInfoService _apiInfoService;
+		private readonly IApiInfoService _apiInfoService;
 
 		public InfoController(IApiInfoService apiInfoService)
 		{

@@ -3,7 +3,7 @@ using Contentment.Api.Domain;
 namespace Contentment.Api.Services {
 	public class ApiInfoService : IApiInfoService
 	{
-		private IApiVersion _apiVersion;
+		private readonly IApiVersion _apiVersion;
 
 		public ApiInfoService(IApiVersion apiVersion)
 		{

@@ -1,4 +1,5 @@
-FROM microsoft/aspnetcore-build AS build-env
+FROM microsoft/aspnetcore-build:2 AS build-env
+LABEL MAINTAINER="Simon Baynes"
 ARG BUILD_NUMBER=0
 ENV BUILD_NUMBER ${BUILD_NUMBER}
 WORKDIR /source
