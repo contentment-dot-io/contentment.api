@@ -26,4 +26,4 @@ docker build -t contentment-api .
 docker run -it -p 5000:80 contentment-api
 ```
 
-Navigate to `http://localhost:5000/info/`
+Navigate to `http://localhost:5000/info`

@@ -4,7 +4,7 @@ using Contentment.Api.Model;
 namespace Contentment.Api.Services {
 	public class ContentService : IContentService
 	{
-		private IIdGenerator _idGenerator;
+		private readonly IIdGenerator _idGenerator;
 
 		public ContentService(IIdGenerator idGenerator)
 		{
