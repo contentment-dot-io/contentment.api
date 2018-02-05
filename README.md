@@ -12,6 +12,14 @@ Pull requests are always welcome. Please read the [contributing guidelines](.git
 
 ## Docker
 
+### Local development with Docker Compose
+
+```bash
+cd ./src/Contentment.Api
+
+docker-compose up
+```
+
 ### Build with Docker
 
 ```bash
